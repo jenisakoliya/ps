@@ -536,7 +536,7 @@
 
 
 
-import React, { useState } from "react";
+import  { useState } from "react";
 import PizZip from "pizzip";
 import Docxtemplater from "docxtemplater";
 import { saveAs } from "file-saver";
@@ -955,110 +955,110 @@ export default function Data() {
 //     </div>
 //   );
 // }
-import React, { useState } from "react";
-import PizZip from "pizzip";
-import Docxtemplater from "docxtemplater";
-import { saveAs } from "file-saver";
+// import React, { useState } from "react";
+// import PizZip from "pizzip";
+// import Docxtemplater from "docxtemplater";
+// import { saveAs } from "file-saver";
 
-export default function UploadAndFillDocx() {
-  const [file, setFile] = useState(null);
-  const [formData, setFormData] = useState({
-    bank_name: "",
-    ac_no: "",
-    fraud_amount: "",
-    date: "",
-    ack_no: ""
-  });
+// export default function UploadAndFillDocx() {
+//   const [file, setFile] = useState(null);
+//   const [formData, setFormData] = useState({
+//     bank_name: "",
+//     ac_no: "",
+//     fraud_amount: "",
+//     date: "",
+//     ack_no: ""
+//   });
 
-  // Handle file upload
-  const onFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+//   // Handle file upload
+//   const onFileChange = (e) => {
+//     setFile(e.target.files[0]);
+//   };
 
-  // Handle form changes
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+//   // Handle form changes
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
 
-  // Generate final Word file
-  const generateDoc = async () => {
-    if (!file) {
-      alert("Please upload a Word template file!");
-      return;
-    }
+//   // Generate final Word file
+//   const generateDoc = async () => {
+//     if (!file) {
+//       alert("Please upload a Word template file!");
+//       return;
+//     }
 
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      try {
-        const content = event.target.result;
-        const zip = new PizZip(content);
-        const doc = new Docxtemplater(zip, {
-          paragraphLoop: true,
-          linebreaks: true,
-        });
+//     const reader = new FileReader();
+//     reader.onload = function (event) {
+//       try {
+//         const content = event.target.result;
+//         const zip = new PizZip(content);
+//         const doc = new Docxtemplater(zip, {
+//           paragraphLoop: true,
+//           linebreaks: true,
+//         });
 
-        // Replace placeholders with form data
-        doc.render(formData);
+//         // Replace placeholders with form data
+//         doc.render(formData);
 
-        const out = doc.getZip().generate({
-          type: "blob",
-          mimeType:
-            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        });
-        saveAs(out, "filled_report.docx");
-      } catch (error) {
-        console.error("Error generating document:", error);
-        alert("Something went wrong while processing the Word file.");
-      }
-    };
-    reader.readAsBinaryString(file);
-  };
+//         const out = doc.getZip().generate({
+//           type: "blob",
+//           mimeType:
+//             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+//         });
+//         saveAs(out, "filled_report.docx");
+//       } catch (error) {
+//         console.error("Error generating document:", error);
+//         alert("Something went wrong while processing the Word file.");
+//       }
+//     };
+//     reader.readAsBinaryString(file);
+//   };
 
-  return (
-    <div className="p-4">
-      <h2>Upload Template & Fill Data</h2>
-      <input type="file" onChange={onFileChange} accept=".docx" />
+//   return (
+//     <div className="p-4">
+//       <h2>Upload Template & Fill Data</h2>
+//       <input type="file" onChange={onFileChange} accept=".docx" />
 
-      <div className="mt-3">
-        <input
-          type="text"
-          name="bank_name"
-          placeholder="Bank Name"
-          value={formData.bank_name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="ac_no"
-          placeholder="Account No"
-          value={formData.ac_no}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="fraud_amount"
-          placeholder="Fraud Amount"
-          value={formData.fraud_amount}
-          onChange={handleChange}
-        />
-        <input
-          type="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="ack_no"
-          placeholder="Ack No"
-          value={formData.ack_no}
-          onChange={handleChange}
-        />
-      </div>
+//       <div className="mt-3">
+//         <input
+//           type="text"
+//           name="bank_name"
+//           placeholder="Bank Name"
+//           value={formData.bank_name}
+//           onChange={handleChange}
+//         />
+//         <input
+//           type="text"
+//           name="ac_no"
+//           placeholder="Account No"
+//           value={formData.ac_no}
+//           onChange={handleChange}
+//         />
+//         <input
+//           type="text"
+//           name="fraud_amount"
+//           placeholder="Fraud Amount"
+//           value={formData.fraud_amount}
+//           onChange={handleChange}
+//         />
+//         <input
+//           type="date"
+//           name="date"
+//           value={formData.date}
+//           onChange={handleChange}
+//         />
+//         <input
+//           type="text"
+//           name="ack_no"
+//           placeholder="Ack No"
+//           value={formData.ack_no}
+//           onChange={handleChange}
+//         />
+//       </div>
 
-      <button onClick={generateDoc} className="mt-4">
-        Generate Word File
-      </button>
-    </div>
-  );
-}
+//       <button onClick={generateDoc} className="mt-4">
+//         Generate Word File
+//       </button>
+//     </div>
+//   );
+// }
