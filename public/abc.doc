@@ -1,0 +1,8 @@
+Hello {name},
+
+We have received your registration details.
+
+📧 Your email: {email}
+
+Thank you,
+Support Team
